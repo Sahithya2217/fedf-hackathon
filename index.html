@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Urban Surplus Optimization Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Urban Surplus Optimization Network</h1>
+    <p>Smart redistribution: classify, match, and allocate surplus to NGOs in real-time.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Create surplus item</h2>
+      <form id="itemForm">
+        <div class="grid">
+          <label>
+            Title
+            <input type="text" name="title" placeholder="Cooked rice trays" required />
+          </label>
+          <label>
+            Description
+            <input type="text" name="description" placeholder="10 trays near expiry" required />
+          </label>
+          <label>
+            Quantity
+            <input type="number" name="quantity" min="1" value="10" required />
+          </label>
+          <label>
+            Unit
+            <input type="text" name="unit" placeholder="trays" value="trays" required />
+          </label>
+          <label>
+            Condition
+            <select name="condition">
+              <option value="new">new</option>
+              <option value="good">good</option>
+              <option value="near_expiry" selected>near_expiry</option>
+            </select>
+          </label>
+          <label>
+            Perishability (hours)
+            <input type="number" name="perishabilityHours" min="0" value="6" />
+          </label>
+          <label>
+            Expiry Date (optional)
+            <input type="date" name="expiryDate" />
+          </label>
+          <label>
+            Donor Address
+            <input type="text" name="address" placeholder="Green Bites, Quthbullapur, Hyderabad" required />
+          </label>
+        </div>
+        <div class="row">
+          <button type="submit">Add item</button>
+          <button type="button" id="expireNow" class="secondary">Expire now (demo)</button>
+          <button type="button" id="resetDemo" class="danger">Reset demo data</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>NGOs directory</h2>
+      <table id="ngoTable">
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th><th>Focus</th><th>Capacity/day</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Surplus items</h2>
+      <table id="itemTable">
+        <thead>
+          <tr>
+            <th>ID</th><th>Title</th><th>Category</th><th>Qty</th><th>Status</th><th>Expires</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Proposals & allocations</h2>
+      <table id="allocTable">
+        <thead>
+          <tr>
+            <th>Alloc ID</th><th>Item</th><th>NGO</th><th>Score</th><th>Status</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <small>Demo: LocalStorage + Vanilla JS. Matching = perishability + focus + capacity. Address replaces coordinates.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
